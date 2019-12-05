@@ -1,0 +1,14 @@
+.col-md-6
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Today's turns by status
+    .grid-body.no-border
+      %p 
+        Quantity of turns today, organized by each status in a pie graph
+      %br
+      #sparkline-pie{style: "height:250px"}
+
+
+:javascript
+  var pie =  #{@statistics[:pie].to_json};

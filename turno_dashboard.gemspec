@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = TurnoDashboard::VERSION
   s.authors     = ["Cesar A Sulbaran"]
   s.email       = ["cesulbaran@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of TurnoDashboard."
-  s.description = "TODO: Description of TurnoDashboard."
+  s.homepage    = "https://github.com/Electronikaco/turno_dashboard"
+  s.summary     = "Dashboard"
+  s.description = "Modulo Engine, [Dashboard]"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

@@ -1,0 +1,33 @@
+- @units.uniq.each do |unit|
+  .row
+    .col-md-12
+      %p
+        Unidad:
+        = unit.name
+      .col-md-4
+        .grid.simple
+          .grid-title.no-border
+            %h4
+              Detalle de estatus por el mes
+          .grid-body.no-border
+            %br
+            = pie_chart Attention.where(unit_id: unit.id, created_at: Time.now.beginning_of_month..Time.now ).group(:status).count, width: "100%", height: "80%"
+
+      .col-md-4
+        .grid.simple
+          .grid-title.no-border
+            %h4
+              Detalle de estatus de la semana
+          .grid-body.no-border
+            %br
+            = pie_chart Attention.where(unit_id: unit.id, created_at: Time.now.beginning_of_week..Time.now ).group(:status).count, width: "100%", height: "80%"
+
+      .col-md-4
+        .grid.simple
+          .grid-title.no-border
+            %h4
+              Detalle de estatus del día
+          .grid-body.no-border
+            %br
+            = pie_chart Attention.where(unit_id: unit.id, created_at: Time.now.beginning_of_day..Time.now ).group(:status).count, width: "100%", height: "80%"
+

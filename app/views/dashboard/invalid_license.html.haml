@@ -1,0 +1,8 @@
+.well.well-large.text-center
+  %h1
+    %i.fa.fa-warning
+    = _('Your license is invalid')
+  %p
+    = _('Please contact support by calling Electronika respresentative')
+  - if @code
+    %p= @code

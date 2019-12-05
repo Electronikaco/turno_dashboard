@@ -1,0 +1,13 @@
+%h1 Turno Digital
+.row
+  = render 'surveys_month', locals: { answers: @answers}
+.row
+  = render 'turns_month', locals: { attention: @attentions, users: @users }
+.row
+  = render 'turns_detail', locals: { attention: @attentions, users: @users }
+.row
+  = render 'turns_units'
+.row
+  = render 'turns_status'
+/= render 'turns_daily_pie'
+

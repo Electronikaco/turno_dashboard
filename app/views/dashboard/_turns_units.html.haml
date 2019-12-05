@@ -1,0 +1,13 @@
+.col-md-12
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Detalle de turnos por unidades de atención en el mes
+    .grid-body.no-border
+      %p
+        Totales de turnos generados por unidades de atención para el presente me
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart @units.distinct.map { |unit| {name: unit.name, data: unit.attentions.group("DATE_FORMAT(attentions.created_at, '%Y-%m-%d')").count }}, width: "100%", height: "80%"
+      - else
+        = line_chart @units.distinct.map { |unit| {name: unit.name, data: unit.attentions.group('CONVERT(VARCHAR(10),attentions.created_at, 120)').count }}, width: "100%", height: "80%"

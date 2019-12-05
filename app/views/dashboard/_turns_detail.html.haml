@@ -1,0 +1,23 @@
+.col-md-6
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Turnos registrados en la semana
+    .grid-body.no-border
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart Attention.where(created_at: Time.now.beginning_of_week..Time.now).group("DATE_FORMAT(created_at, '%Y-%m-%d')").count, width: "100%", height: "70%"
+      - else
+        = line_chart Attention.where(created_at: Time.now.beginning_of_week..Time.now).group('CONVERT(VARCHAR(10), created_at, 120)').count, width: "100%", height: "70%"
+
+.col-md-6
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Turnos registrados en el día
+    .grid-body.no-border
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart Attention.where(created_at: Time.now.beginning_of_day..Time.now).group("DATE_FORMAT(created_at, '%Y-%m-%d')").count, width: "100%", height: "70%"
+      - else
+        = line_chart Attention.where(created_at: Time.now.beginning_of_day..Time.now).group('CONVERT(VARCHAR(10), created_at, 120)').count, width: "100%", height: "70%"

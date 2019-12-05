@@ -1,0 +1,51 @@
+.col-md-12
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Detalle de turnos por unidades de atención en el mes
+    .grid-body.no-border
+      %p
+        Totales de turnos generados por unidades de atención para el presente me
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart User.joins(:answers).distinct.map { |user| { name: user.name, data: user.answers.group("DATE_FORMAT(answers.created_at, '%Y-%m-%d')").count }}, width: "100%", height: "80%"
+      - else
+        = line_chart User.joins(:answers).distinct.map { |user| {name: user.name, data: user.answers.group('CONVERT(VARCHAR(10), answers.created_at, 120)').count }}, width: "100%", height: "80%"
+
+
+
+.col-md-4
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Opiniones del mes
+    .grid-body.no-border
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart Answer.where(created_at: Time.now.beginning_of_month..Time.now).group("DATE_FORMAT(created_at, '%Y-%m-%d')").count, width: "100%", height: "70%"
+      - else
+        = line_chart Answer.where(created_at: Time.now.beginning_of_month..Time.now).group('CONVERT(VARCHAR(10), created_at, 120)').count, width: "100%", height: "70%"
+
+.col-md-4
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Opiniones de la semana
+    .grid-body.no-border
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart Answer.where(created_at: Time.now.beginning_of_week..Time.now).group("DATE_FORMAT(created_at, '%Y-%m-%d')").count, width: "100%", height: "70%"
+      - else
+        = line_chart Answer.where(created_at: Time.now.beginning_of_week..Time.now).group('CONVERT(VARCHAR(10), created_at, 120)').count, width: "100%", height: "70%"
+
+.col-md-4
+  .grid.simple
+    .grid-title.no-border
+      %h4
+        Opiniones del día
+    .grid-body.no-border
+      %br
+      - if Attention.connection_config[:adapter] == 'mysql2'
+        = line_chart Answer.where(created_at: Time.now.beginning_of_day..Time.now).group("DATE_FORMAT(created_at, '%Y-%m-%d')").count, width: "100%", height: "70%"
+      - else
+        = line_chart Answer.where(created_at: Time.now.beginning_of_day..Time.now).group('CONVERT(VARCHAR(10), created_at, 120)').count, width: "100%", height: "70%"
