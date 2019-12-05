@@ -1,5 +1,6 @@
 require "turno_dashboard/engine"
 
 module TurnoDashboard
-  # Your code goes here...
+   class Engine < ::Rails::Engine
+  end
 end

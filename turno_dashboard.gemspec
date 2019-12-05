@@ -19,4 +19,15 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 5.2.1"
 
   s.add_development_dependency "sqlite3"
+  s.test_files = Dir["spec/**/*"]            
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'faker'
+  s.add_development_dependency 'shoulda-matchers'
+  s.add_development_dependency 'webmock'
+  s.add_development_dependency 'rails_best_practices'
+  s.add_development_dependency 'rubocop-airbnb'
+  s.add_development_dependency 'rubocop-rspec'
+  s.add_development_dependency 'factory_bot_rails'
+  s.add_development_dependency 'dotenv-rails'
+  s.add_development_dependency 'mysql2'
 end

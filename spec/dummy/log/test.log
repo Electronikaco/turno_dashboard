@@ -1,0 +1,247 @@
+  [1m[35m (0.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS `turno_digital_test`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE `turno_digital_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS `turno_digital_test`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `turno_digital_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `abandonment_reasons` CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE `abandonment_reasons` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `absence_reasons` CASCADE[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE `absence_reasons` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `answers` CASCADE[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE `answers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `poll_result_id` int, `question_id` int, `value` text, `int_value` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `poll_id` int, `owner_id` int, `client_id` int, `venue_id` int,  INDEX `index_answers_on_poll_id`  (`poll_id`),  INDEX `index_answers_on_poll_result_id`  (`poll_result_id`),  INDEX `index_answers_on_question_id`  (`question_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `attention_logs` CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE `attention_logs` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `attention_id` int NOT NULL, `user_id` int, `action` varchar(255), `comments` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_attention_logs_on_attention_id`  (`attention_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `attentions` CASCADE[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE `attentions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `turn` int NOT NULL, `service_id` int NOT NULL, `user_id` int, `customer_id` int, `status` varchar(255) DEFAULT 'requested' NOT NULL, `scheduled_at` datetime NOT NULL, `appointment` tinyint(1) DEFAULT FALSE NOT NULL, `attention_started_at` datetime, `attention_end_at` datetime, `duration` int, `attention_duration` int DEFAULT 1 NOT NULL, `was_redirected` tinyint(1) DEFAULT FALSE NOT NULL, `dead_time` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `priority` int DEFAULT 1, `turn_order` int, `comments` text, `unit_id` int, `turn_code` varchar(255), `service_point_name` varchar(255), `rate` int, `called` datetime, `postponed` tinyint(1) DEFAULT FALSE, `abandonment_reason_id` int, `priority_id` int, `subservice_id` int, `redirected_from` int DEFAULT 0 NOT NULL, `appointment_at` datetime, `appointment_end_at` datetime, `service_point_id` int, `service_point_slot` varchar(255),  INDEX `index_attentions_on_customer_id`  (`customer_id`),  INDEX `index_attentions_on_service_id`  (`service_id`),  INDEX `index_attentions_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `attentions_services` CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE `attentions_services` (`attention_id` int NOT NULL, `service_id` int NOT NULL,  INDEX `index_attentions_services_on_attention_id_and_service_id`  (`attention_id`, `service_id`),  INDEX `index_attentions_services_on_service_id_and_attention_id`  (`service_id`, `attention_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `audits` CASCADE[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE `audits` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `auditable_id` int, `auditable_type` varchar(255), `associated_id` int, `associated_type` varchar(255), `user_id` int, `user_type` varchar(255), `username` varchar(255), `action` varchar(255), `audited_changes` text, `version` int DEFAULT 0, `comment` varchar(255), `remote_address` varchar(255), `request_uuid` varchar(255), `created_at` datetime,  INDEX `associated_index`  (`associated_id`, `associated_type`),  INDEX `auditable_index`  (`auditable_id`, `auditable_type`),  INDEX `index_audits_on_created_at`  (`created_at`),  INDEX `index_audits_on_request_uuid`  (`request_uuid`),  INDEX `user_index`  (`user_id`, `user_type`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `chat_users` CASCADE[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE `chat_users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `chat_id` int, `user_id` int, `status` int, `unread_count` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_chat_users_on_chat_id`  (`chat_id`),  INDEX `index_chat_users_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `chats` CASCADE[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE `chats` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `token` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_chats_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `customer_data` CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE `customer_data` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `customer_id` int NOT NULL, `customer_field_id` varchar(255), `field_name` varchar(255), `field_type` varchar(255), `value` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `venue_id` int, `customer_data_key` varchar(255),  INDEX `index_customer_data_on_customer_id`  (`customer_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `customer_fields` CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE `customer_fields` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `hint` varchar(255), `field_type` varchar(255), `data` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `orders` int DEFAULT 0, `active` tinyint(1) DEFAULT TRUE, `required` tinyint(1) DEFAULT FALSE, `important` tinyint(1) DEFAULT FALSE, `regex_validation` varchar(255), `display_on_kiosk` tinyint(1) DEFAULT FALSE NOT NULL, `request_in_modal` tinyint(1) DEFAULT FALSE NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `customers` CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE `customers` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `document_type` varchar(255), `document_id` varchar(255), `first_name` varchar(255), `last_name` varchar(255), `email` varchar(255), `phone` varchar(255), `mobile` varchar(255), `address1` varchar(255), `address2` varchar(255), `age` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `venue_id` int, `last_attention_answered` int) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `kiosks` CASCADE[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE `kiosks` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unit_id` int, `ip` varchar(255) COLLATE utf8_unicode_ci, `print` tinyint(1) DEFAULT TRUE NOT NULL, `css` text COLLATE utf8_unicode_ci, `js` text COLLATE utf8_unicode_ci, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `name` varchar(255) COLLATE utf8_unicode_ci, `seconds_to_go_back_home` int DEFAULT 15 NOT NULL, `last_ip` varchar(255) COLLATE utf8_unicode_ci, `public_template_id` int, `use_keyboard_buffer` tinyint(1) DEFAULT FALSE, `use_provider_from_doc` tinyint(1) DEFAULT FALSE NOT NULL, `show_qr` tinyint(1),  INDEX `index_kiosks_on_unit_id`  (`unit_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `mailboxer_conversation_opt_outs` CASCADE[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE `mailboxer_conversation_opt_outs` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unsubscriber_id` int, `unsubscriber_type` varchar(255), `conversation_id` int,  INDEX `index_mailboxer_conversation_opt_outs_on_conversation_id`  (`conversation_id`),  INDEX `index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type`  (`unsubscriber_id`, `unsubscriber_type`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `mailboxer_conversations` CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE `mailboxer_conversations` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `subject` varchar(255) DEFAULT '', `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `mailboxer_notifications` CASCADE[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE `mailboxer_notifications` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `type` varchar(255), `body` text, `subject` varchar(255) DEFAULT '', `sender_id` int, `sender_type` varchar(255), `conversation_id` int, `draft` tinyint(1) DEFAULT FALSE, `notification_code` varchar(255), `notified_object_id` int, `notified_object_type` varchar(255), `attachment` varchar(255), `updated_at` datetime NOT NULL, `created_at` datetime NOT NULL, `global` tinyint(1) DEFAULT FALSE, `expires` datetime,  INDEX `index_mailboxer_notifications_on_conversation_id`  (`conversation_id`),  INDEX `index_mailboxer_notifications_on_notified_object_id_and_type`  (`notified_object_id`, `notified_object_type`),  INDEX `index_mailboxer_notifications_on_sender_id_and_sender_type`  (`sender_id`, `sender_type`),  INDEX `index_mailboxer_notifications_on_type`  (`type`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `mailboxer_receipts` CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE `mailboxer_receipts` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `receiver_id` int, `receiver_type` varchar(255), `notification_id` int NOT NULL, `is_read` tinyint(1) DEFAULT FALSE, `trashed` tinyint(1) DEFAULT FALSE, `deleted` tinyint(1) DEFAULT FALSE, `mailbox_type` varchar(25), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `is_delivered` tinyint(1) DEFAULT FALSE, `delivery_method` varchar(255), `message_id` varchar(255),  INDEX `index_mailboxer_receipts_on_notification_id`  (`notification_id`),  INDEX `index_mailboxer_receipts_on_receiver_id_and_receiver_type`  (`receiver_id`, `receiver_type`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `messages` CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE `messages` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `chat_id` int, `user_id` int, `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_messages_on_chat_id`  (`chat_id`),  INDEX `index_messages_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `poll_results` CASCADE[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE `poll_results` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `rateable_id` int, `rateable_type` varchar(255), `score` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `poll_id` int,  INDEX `index_poll_results_on_poll_id`  (`poll_id`),  INDEX `index_poll_results_on_rateable_type_and_rateable_id`  (`rateable_type`, `rateable_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `polls` CASCADE[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE `polls` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `questions_count` int, `poll_type` int) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `priorities` CASCADE[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE `priorities` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `priority_level` int DEFAULT 1 NOT NULL, `status` tinyint(1) DEFAULT TRUE NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `venue_id` int, `image_url` varchar(255)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `priorities_services` CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE `priorities_services` (`service_id` int NOT NULL, `priority_id` int NOT NULL,  INDEX `index_priorities_services_on_priority_id_and_service_id`  (`priority_id`, `service_id`),  INDEX `index_priorities_services_on_service_id_and_priority_id`  (`service_id`, `priority_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `public_templates` CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE `public_templates` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `css` text, `js` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `name` varchar(255)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `questions` CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE `questions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `poll_id` int, `title` varchar(255), `field_type` varchar(255), `question_options` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `active` tinyint(1) DEFAULT TRUE, `orders` int,  INDEX `index_questions_on_poll_id`  (`poll_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `rating_tablets` CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE `rating_tablets` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `ip` varchar(255), `css` text, `js` text, `rate_object` varchar(255) DEFAULT '0' NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `rateable_type` varchar(255), `rateable_id` int, `poll_id` int, `name` varchar(255), `last_ip` varchar(255), `show_general_rate` tinyint(1) DEFAULT TRUE NOT NULL,  INDEX `index_rating_tablets_on_poll_id`  (`poll_id`),  INDEX `index_rating_tablets_on_rateable_type_and_rateable_id`  (`rateable_type`, `rateable_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `reports` CASCADE[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE `reports` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int, `day` date, `arrival_time` time, `expected_arrival_time` time, `out_time` time, `expected_out_time` time, `time_worked` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `expected_time_worked` int,  INDEX `index_reports_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS `roles` CASCADE[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE `roles` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `admin` tinyint(1) DEFAULT FALSE NOT NULL, `title` varchar(255), `description` text, `the_role` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `rss_contents` CASCADE[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE `rss_contents` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `url` varchar(255), `title` varchar(255), `content` text, `link` varchar(255), `media_content_height` varchar(255), `media_content_width` varchar(255), `published` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_rss_contents_on_url`  (`url`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `service_points` CASCADE[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE `service_points` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unit_id` int NOT NULL, `name` varchar(255) NOT NULL, `slots_qty` int DEFAULT 1 NOT NULL, `slots_names` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_service_points_on_unit_id`  (`unit_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `service_points_services` CASCADE[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE `service_points_services` (`service_point_id` int NOT NULL, `service_id` int NOT NULL,  INDEX `index_service_points_services_on_service_id_and_service_point_id`  (`service_id`, `service_point_id`),  INDEX `index_service_points_services_on_service_point_id_and_service_id`  (`service_point_id`, `service_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `service_points_subservices` CASCADE[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE `service_points_subservices` (`service_point_id` int NOT NULL, `subservice_id` int NOT NULL,  INDEX `fk_service_points_subservices_service_point_id`  (`service_point_id`),  INDEX `fk_service_points_subservices_subservice_id`  (`subservice_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `services` CASCADE[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE `services` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unit_id` int NOT NULL, `code` varchar(255), `name` varchar(255) NOT NULL, `status` tinyint(1) DEFAULT TRUE NOT NULL, `description` text, `max_days_in_advance` int DEFAULT 30, `timeslot_duration` int, `slots_per_block` int, `choose_date_on_kiosk` tinyint(1) DEFAULT FALSE NOT NULL, `choose_user_on_kiosk` tinyint(1) DEFAULT FALSE NOT NULL, `register_on_kiosk` tinyint(1) DEFAULT FALSE NOT NULL, `poll_id` int, `services_comment` text, `call_by_name` tinyint(1) DEFAULT FALSE NOT NULL, `print_ticket` tinyint(1) DEFAULT TRUE NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `allow_to_omit_registration` tinyint(1) DEFAULT FALSE, `hide_on_kiosk` tinyint(1) DEFAULT FALSE NOT NULL, `show_prefix_by_name` tinyint(1) DEFAULT FALSE NOT NULL, `show_general_rate` tinyint(1) DEFAULT TRUE NOT NULL, `allowed_users` int, `expected_attention_time` int, `average_waiting_time` int, `average_waiting_time_updated_at` datetime, `token` varchar(255), `priority` int DEFAULT 0, `image_url` varchar(255),  INDEX `index_services_on_unit_id`  (`unit_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `services_tvpanels` CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE `services_tvpanels` (`tvpanel_id` int NOT NULL, `service_id` int NOT NULL,  INDEX `index_services_tvpanels_on_service_id_and_tvpanel_id`  (`service_id`, `tvpanel_id`),  INDEX `index_services_tvpanels_on_tvpanel_id_and_service_id`  (`tvpanel_id`, `service_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `services_users` CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE `services_users` (`user_id` int NOT NULL, `service_id` int NOT NULL,  INDEX `index_services_users_on_service_id_and_user_id`  (`service_id`, `user_id`),  INDEX `index_services_users_on_user_id_and_service_id`  (`user_id`, `service_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `settings` CASCADE[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE `settings` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `var` varchar(255) NOT NULL, `value` text, `thing_id` int, `thing_type` varchar(30), `created_at` datetime, `updated_at` datetime, UNIQUE INDEX `index_settings_on_thing_type_and_thing_id_and_var`  (`thing_type`, `thing_id`, `var`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `slides` CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE `slides` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `tvpanel_id` int NOT NULL, `content_type` varchar(255), `url` varchar(255), `data` text, `duration` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `active` tinyint(1) DEFAULT TRUE NOT NULL, `orders` int DEFAULT 0 NOT NULL, `name` varchar(255), `volume` int,  INDEX `index_slides_on_tvpanel_id`  (`tvpanel_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS `subservices` CASCADE[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE `subservices` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unit_id` int, `service_id` int, `name` varchar(255), `code` varchar(255), `status` tinyint(1), `token` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `priority` int DEFAULT 0, `image_url` varchar(255),  INDEX `index_subservices_on_service_id`  (`service_id`),  INDEX `index_subservices_on_unit_id`  (`unit_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `subservices_users` CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE `subservices_users` (`subservice_id` int NOT NULL, `user_id` int NOT NULL,  INDEX `fk_subservices_users_subservice_id`  (`subservice_id`),  INDEX `fk_subservices_users_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `syncs` CASCADE[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE `syncs` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `token_venue` varchar(255), `token_unit` varchar(255) DEFAULT '' NOT NULL, `table_sync` varchar(255), `starts_at` datetime, `ends_at` datetime, `maxid` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `status` tinyint(1)) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `timeslots` CASCADE[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE `timeslots` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `service_id` int, `available` tinyint(1) DEFAULT TRUE NOT NULL, `user_id` int, `single_day` tinyint(1) DEFAULT FALSE NOT NULL, `monday` tinyint(1) DEFAULT FALSE NOT NULL, `tuesday` tinyint(1) DEFAULT FALSE NOT NULL, `wednesday` tinyint(1) DEFAULT FALSE NOT NULL, `thursday` tinyint(1) DEFAULT FALSE NOT NULL, `friday` tinyint(1) DEFAULT FALSE NOT NULL, `saturday` tinyint(1) DEFAULT FALSE NOT NULL, `sunday` tinyint(1) DEFAULT FALSE NOT NULL, `from_date` date NOT NULL, `to_date` date, `from_hour` time NOT NULL, `to_hour` time NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `subservice_id` int, `service_point_id` int, `service_point_slot` varchar(255), `unit_id` int,  INDEX `index_timeslots_on_service_id`  (`service_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `tvpanels` CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE `tvpanels` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `unit_id` int, `ip` varchar(255), `rss_feed_url` varchar(255), `css` text, `js` text, `bell` varchar(255), `tts_name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `name` varchar(255), `last_ip` varchar(255), `public_template_id` int,  INDEX `index_tvpanels_on_unit_id`  (`unit_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `units` CASCADE[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE `units` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `status` tinyint(1) DEFAULT FALSE NOT NULL, `code` varchar(255), `call_by_name` tinyint(1) DEFAULT FALSE NOT NULL, `increment_turn_by_service` tinyint(1) DEFAULT TRUE NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `services_count` int DEFAULT 0, `service_points_count` int DEFAULT 0, `expected_attention_time` int, `venue_id` int, `token` varchar(255) DEFAULT '1a99f722-05e5-4165-a3b5-ffce43573354') ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `user_absences` CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE `user_absences` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `end` datetime, `minutes` int, `absences_comment` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `absence_reason_id` int, `user_id` int) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `user_logins` CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE `user_logins` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int, `action` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_user_logins_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE `users` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `role_id` int NOT NULL, `email` varchar(255) NOT NULL, `first_name` varchar(255), `last_name` varchar(255), `active_unit_id` int, `custom_services` tinyint(1) DEFAULT FALSE NOT NULL, `service_point_id` int, `service_point_slot` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `active` tinyint(1) DEFAULT FALSE NOT NULL, `permanent_service_point` int, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `photo_uid` varchar(255), `status` int DEFAULT 0 NOT NULL, `venue_id` int, `token` varchar(255), `chat_status` int DEFAULT 0, `custom_subservices` tinyint(1) DEFAULT FALSE NOT NULL, `authentication_token` varchar(30), UNIQUE INDEX `index_users_on_authentication_token`  (`authentication_token`), UNIQUE INDEX `index_users_on_email`  (`email`),  INDEX `index_users_on_role_id`  (`role_id`),  INDEX `index_users_on_token`  (`token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS `venues` CASCADE[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE `venues` (`id` mediumint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(250) NOT NULL, `root_id` int, `created_at` datetime, `updated_at` datetime, `token` varchar(255) DEFAULT 'fdce9173-3882-4a7d-ba5c-b1fd5d7fc258', `status` tinyint(1) DEFAULT FALSE NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1[0m
+  [1m[35m (25.5ms)[0m  [1m[35mALTER TABLE `answers` ADD CONSTRAINT `fk_rails_f87d4465c2`
+FOREIGN KEY (`poll_id`)
+  REFERENCES `polls` (`id`)
+[0m
+  [1m[35m (16.0ms)[0m  [1m[35mALTER TABLE `attention_logs` ADD CONSTRAINT `fk_rails_52a81af4e2`
+FOREIGN KEY (`attention_id`)
+  REFERENCES `attentions` (`id`)
+[0m
+  [1m[35m (17.2ms)[0m  [1m[35mALTER TABLE `attentions` ADD CONSTRAINT `fk_rails_966c466b39`
+FOREIGN KEY (`customer_id`)
+  REFERENCES `customers` (`id`)
+[0m
+  [1m[35m (18.7ms)[0m  [1m[35mALTER TABLE `attentions` ADD CONSTRAINT `fk_rails_2cadb09cc3`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+[0m
+  [1m[35m (18.0ms)[0m  [1m[35mALTER TABLE `attentions` ADD CONSTRAINT `fk_rails_7e410e9217`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (17.1ms)[0m  [1m[35mALTER TABLE `chat_users` ADD CONSTRAINT `fk_chat_users_chat_id`
+FOREIGN KEY (`chat_id`)
+  REFERENCES `chats` (`id`)
+[0m
+  [1m[35m (16.7ms)[0m  [1m[35mALTER TABLE `chat_users` ADD CONSTRAINT `fk_chat_users_user_id`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (14.4ms)[0m  [1m[35mALTER TABLE `chats` ADD CONSTRAINT `fk_chats_user_id`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (15.9ms)[0m  [1m[35mALTER TABLE `customer_data` ADD CONSTRAINT `fk_rails_ddef3564eb`
+FOREIGN KEY (`customer_id`)
+  REFERENCES `customers` (`id`)
+[0m
+  [1m[35m (15.9ms)[0m  [1m[35mALTER TABLE `kiosks` ADD CONSTRAINT `fk_rails_77ce631060`
+FOREIGN KEY (`unit_id`)
+  REFERENCES `units` (`id`)
+[0m
+  [1m[35m (15.7ms)[0m  [1m[35mALTER TABLE `mailboxer_conversation_opt_outs` ADD CONSTRAINT `mb_opt_outs_on_conversations_id`
+FOREIGN KEY (`conversation_id`)
+  REFERENCES `mailboxer_conversations` (`id`)
+[0m
+  [1m[35m (19.2ms)[0m  [1m[35mALTER TABLE `mailboxer_notifications` ADD CONSTRAINT `notifications_on_conversation_id`
+FOREIGN KEY (`conversation_id`)
+  REFERENCES `mailboxer_conversations` (`id`)
+[0m
+  [1m[35m (16.6ms)[0m  [1m[35mALTER TABLE `mailboxer_receipts` ADD CONSTRAINT `receipts_on_notification_id`
+FOREIGN KEY (`notification_id`)
+  REFERENCES `mailboxer_notifications` (`id`)
+[0m
+  [1m[35m (16.9ms)[0m  [1m[35mALTER TABLE `messages` ADD CONSTRAINT `fk_messages_chat_id`
+FOREIGN KEY (`chat_id`)
+  REFERENCES `chats` (`id`)
+[0m
+  [1m[35m (15.8ms)[0m  [1m[35mALTER TABLE `messages` ADD CONSTRAINT `fk_messages_user_id`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (16.2ms)[0m  [1m[35mALTER TABLE `poll_results` ADD CONSTRAINT `fk_rails_5108eb3baa`
+FOREIGN KEY (`poll_id`)
+  REFERENCES `polls` (`id`)
+[0m
+  [1m[35m (14.4ms)[0m  [1m[35mALTER TABLE `questions` ADD CONSTRAINT `fk_rails_6c530c0079`
+FOREIGN KEY (`poll_id`)
+  REFERENCES `polls` (`id`)
+[0m
+  [1m[35m (17.3ms)[0m  [1m[35mALTER TABLE `rating_tablets` ADD CONSTRAINT `fk_rails_b3f0660b8d`
+FOREIGN KEY (`poll_id`)
+  REFERENCES `polls` (`id`)
+[0m
+  [1m[35m (15.1ms)[0m  [1m[35mALTER TABLE `reports` ADD CONSTRAINT `fk_rails_c7699d537d`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (14.9ms)[0m  [1m[35mALTER TABLE `service_points` ADD CONSTRAINT `fk_rails_9d847d9439`
+FOREIGN KEY (`unit_id`)
+  REFERENCES `units` (`id`)
+[0m
+  [1m[35m (15.5ms)[0m  [1m[35mALTER TABLE `service_points_subservices` ADD CONSTRAINT `fk_service_points_subservices_service_point_id`
+FOREIGN KEY (`service_point_id`)
+  REFERENCES `service_points` (`id`)
+[0m
+  [1m[35m (15.7ms)[0m  [1m[35mALTER TABLE `service_points_subservices` ADD CONSTRAINT `fk_service_points_subservices_subservice_id`
+FOREIGN KEY (`subservice_id`)
+  REFERENCES `subservices` (`id`)
+[0m
+  [1m[35m (15.3ms)[0m  [1m[35mALTER TABLE `services` ADD CONSTRAINT `fk_rails_bcef03d604`
+FOREIGN KEY (`unit_id`)
+  REFERENCES `units` (`id`)
+[0m
+  [1m[35m (14.5ms)[0m  [1m[35mALTER TABLE `slides` ADD CONSTRAINT `fk_rails_6c6013cc4c`
+FOREIGN KEY (`tvpanel_id`)
+  REFERENCES `tvpanels` (`id`)
+[0m
+  [1m[35m (16.6ms)[0m  [1m[35mALTER TABLE `subservices` ADD CONSTRAINT `fk_subservices_service_id`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+[0m
+  [1m[35m (16.0ms)[0m  [1m[35mALTER TABLE `subservices` ADD CONSTRAINT `fk_subservices_unit_id`
+FOREIGN KEY (`unit_id`)
+  REFERENCES `units` (`id`)
+[0m
+  [1m[35m (15.6ms)[0m  [1m[35mALTER TABLE `subservices_users` ADD CONSTRAINT `fk_subservices_users_subservice_id`
+FOREIGN KEY (`subservice_id`)
+  REFERENCES `subservices` (`id`)
+[0m
+  [1m[35m (16.8ms)[0m  [1m[35mALTER TABLE `subservices_users` ADD CONSTRAINT `fk_subservices_users_user_id`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (14.1ms)[0m  [1m[35mALTER TABLE `timeslots` ADD CONSTRAINT `fk_rails_33bfb3c4ae`
+FOREIGN KEY (`service_id`)
+  REFERENCES `services` (`id`)
+[0m
+  [1m[35m (15.0ms)[0m  [1m[35mALTER TABLE `tvpanels` ADD CONSTRAINT `fk_rails_2ebd95d9c0`
+FOREIGN KEY (`unit_id`)
+  REFERENCES `units` (`id`)
+[0m
+  [1m[35m (14.1ms)[0m  [1m[35mALTER TABLE `user_logins` ADD CONSTRAINT `fk_rails_43d9929204`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (18.7ms)[0m  [1m[35mALTER TABLE `users` ADD CONSTRAINT `fk_rails_642f17018b`
+FOREIGN KEY (`role_id`)
+  REFERENCES `roles` (`id`)
+[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20190920150514)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'test', '2019-12-05 17:51:16', '2019-12-05 17:51:16')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
