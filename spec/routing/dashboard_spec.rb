@@ -8,4 +8,8 @@ RSpec.describe 'TurnoDashboard::DashboardController', type: :routing do
   it 'routes to #index' do
     expect(get: "#{base_url}").to route_to( "#{base_controller}#index")
   end
+
+  it 'routes to #about' do
+    expect(get: "#{base_url}/about").to route_to( "#{base_controller}#about")
+  end
 end

@@ -24,9 +24,7 @@ class TurnoDashboard::DashboardController < TurnoDashboard::ApplicationControlle
                      .where('attentions.created_at >= ? ', Time.now.beginning_of_month)
   end
 
-  def about
-
-  end
+  def about; end
 
   def turns_daily_bars
     return
