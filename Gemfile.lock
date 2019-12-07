@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    turno_dashboard (0.1.0)
+    turno_dashboard (0.1.6)
       rails (~> 5.2.1)
 
 GEM

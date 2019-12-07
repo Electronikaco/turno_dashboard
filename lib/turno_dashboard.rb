@@ -9,6 +9,6 @@ module TurnoDashboard
   end
   
   class Engine < ::Rails::Engine
-  
+    isolate_namespace TurnoDashboard
   end
 end

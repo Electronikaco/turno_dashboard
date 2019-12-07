@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DashboardController < ApplicationController
+class DashboardController < TurnoDashboard::ApplicationController
   skip_before_action :authenticate_and_authorize!
   before_action :authenticate_user!, except: :about
 
