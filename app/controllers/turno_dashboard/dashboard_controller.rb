@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DashboardController < TurnoDashboard::ApplicationController
-  skip_before_action :authenticate_and_authorize!
-  before_action :authenticate_user!, except: :about
+class TurnoDashboard::DashboardController < TurnoDashboard::ApplicationController
+  #skip_before_action :authenticate_and_authorize!
+  #before_action :authenticate_user!, except: :about
 
   def index
     if Attention.connection_config[:adapter] == 'mysql2'
@@ -14,18 +14,14 @@ class DashboardController < TurnoDashboard::ApplicationController
                      .where('polls.poll_type = 1')
                      .where( create_at: Time.now.beginning_of_month.. Time.now )
                      .order(ord)
-
     @attentions = Attention
                     .where( created_at: Time.now.beginning_of_month..Time.now )
                     .order(ord)
-
     @users      = User
                     .where( created_at: Time.now.beginning_of_month..Time.now )
                     .order(ord)
-
     @units     = Unit.joins(:attentions)
                      .where('attentions.created_at >= ? ', Time.now.beginning_of_month)
-
   end
 
   def about
